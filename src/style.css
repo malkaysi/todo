@@ -1,0 +1,39 @@
+*{
+    box-sizing: border-box;
+}
+
+html{
+    margin: 0;
+    min-height: 100%;
+}
+
+body{
+    font-family: Arial;
+    background: #f1f1f1;
+    margin: 0;
+    min-height: 100%;
+}
+
+.listContainer{
+    width: 25%;
+    background-color: white;
+    position: absolute;
+    top:0;
+    bottom:0;
+}
+
+.taskContainer{
+    width: 75%;
+    background-color:#f1f1f1;
+    position: absolute;
+    top:0;
+    right:0;
+    bottom:0;
+}
+
+.listCard{
+    background-color: red;
+    padding: 20px;
+    height: 50px;
+    margin-top: 20px;
+}
