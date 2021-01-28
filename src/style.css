@@ -29,6 +29,7 @@ body{
     height: 100vh;
     margin-top: 20px;
     padding: 20px;
+    text-align: center;
 }
 
 .taskContainer{
@@ -38,5 +39,7 @@ body{
     height: 100vh;
     margin-top: 20px;
     padding: 20px;
+    text-align: center;
 }
+
 
