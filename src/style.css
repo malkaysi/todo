@@ -22,7 +22,7 @@ body{
   }
 
 
-.listContainer{
+.listMenu{
     float:left;
     width: 25%;
     background-color: #EEEEEB;
@@ -31,6 +31,8 @@ body{
     margin-bottom: 20px;
     padding: 20px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .taskContainer{
@@ -58,8 +60,7 @@ body{
     cursor: pointer;
     white-space: nowrap;
     border-radius: 50%;
-    position: absolute;
-    bottom: 50px;
+    align-self: center;
 }
 
 .newProject:hover{
@@ -79,3 +80,27 @@ body{
     opacity: 0.5;
 }
 
+.listContainer{
+    display: flex;
+    flex-direction: column;
+    height: 550px;
+}
+
+.listItem{
+    border: none;
+    padding: 8px 16px;
+    overflow: hidden;
+    color: black;
+    background-color: #879388;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+    border-radius: 4px;
+    margin: 10px;
+}
+
+
+.listItem:hover{
+    background-color: gray;
+    color: #283227;
+}
