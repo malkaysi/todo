@@ -35,18 +35,7 @@ body{
     flex-direction: column;
 }
 
-.taskContainer{
-    float: right;
-    width: 74%;
-    background-color: #EEEEEB;
-    height: 95vh;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 20px;
-    text-align: center;
-}
-
-.newProject{
+.newProject, .newTask{
     color: #fff;
     background-color: #283227;
     font-size: 38px!important;
@@ -61,6 +50,7 @@ body{
     white-space: nowrap;
     border-radius: 50%;
     align-self: center;
+    margin-top: 50px;
 }
 
 .newProject:hover{
@@ -103,4 +93,31 @@ body{
 .listItem:hover{
     background-color: gray;
     color: #283227;
+}
+
+.taskMenu{
+    float: right;
+    width: 74%;
+    background-color: #EEEEEB;
+    height: 95vh;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.taskContainer{
+    border-color: black;
+    border-style: solid;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tasks{
+    border-color: #879388;
+    border-style: solid;
+
 }
