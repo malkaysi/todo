@@ -126,7 +126,7 @@ body{
 }
 
 .task{
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .checkboxContainer{
@@ -152,11 +152,12 @@ body{
 
   .checkmark {
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 0;
     height: 25px;
     width: 25px;
     background-color: #879388;
+    transform: translateY(-50%);
   }
 
   .checkboxContainer:hover input ~ .checkmark {
@@ -189,4 +190,13 @@ body{
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+  }
+
+  .delete{
+    display: inline-block;
+    top: 50%;
+    left: -40px;
+    height: 25px;
+    width: 25px;
+    transform: translateY(-50%);
   }
