@@ -193,10 +193,6 @@ body{
   }
 
   .delete{
-    display: inline-block;
-    top: 50%;
-    left: -40px;
     height: 25px;
     width: 25px;
-    transform: translateY(-50%);
   }
