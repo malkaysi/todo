@@ -38,10 +38,12 @@ body{
 .newProject, .newTask{
     color: #fff;
     background-color: #283227;
-    font-size: 38px!important;
+    font-size: 25px!important;
     border: none;
     display: inline-block;
-    padding: 16px 24px;
+    height: 75px;
+    width: 75px;
+    line-height: 75px;
     vertical-align: middle;
     overflow: hidden;
     text-decoration: none;
@@ -51,15 +53,18 @@ body{
     border-radius: 50%;
     align-self: center;
     margin-top: 50px;
+    font-weight: bold;
 }
 
 .deleteProject, .deleteTask{
     color: #fff;
     background-color: rgb(179, 2, 2);
-    font-size: 38px!important;
+    font-size: 25px!important;
     border: none;
     display: inline-block;
-    padding: 16px 24px;
+    height: 75px;
+    width: 75px;
+    line-height: 75px;
     vertical-align: middle;
     overflow: hidden;
     text-decoration: none;
@@ -70,6 +75,7 @@ body{
     align-self: center;
     margin-top: 50px;
     margin-left: 20px;
+    font-weight: bold;
 }
 
 .newProject:hover{
@@ -128,8 +134,8 @@ body{
 }
 
 .taskContainer{
-    border-color: black;
-    border-style: solid;
+    /* border-color: black;
+    border-style: solid; */
     height: 550px;
     display: flex;
     flex-direction: column;
@@ -172,7 +178,7 @@ body{
   .checkmark {
     position: absolute;
     top: 50%;
-    left: 0;
+    left: -15px;
     height: 25px;
     width: 25px;
     background-color: #879388;
