@@ -78,7 +78,7 @@ body{
     font-weight: bold;
 }
 
-.newProject:hover{
+.newProject:hover, .newTask:hover{
     background-color: gray;
     color: #283227;
 }
@@ -152,4 +152,51 @@ body{
 
 .task{
     margin-top: 20px;
+}
+
+.delete{
+    margin-left: 5px;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    background-color: rgb(255, 70, 70);
+    cursor: pointer;
+    overflow: hidden;
+    vertical-align: middle;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.delete:hover{
+    background-color: rgb(250, 190, 190);
+    color: black;
+}
+
+.edit{
+    background: url('./assets/edit-icon.png');
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.edit:hover{
+    background-color: gray;
+}
+
+label{
+    font-size: large;
+}
+
+input[type=checkbox] {
+    margin-right: 10px;
+    transform: scale(1.2);
 }
