@@ -101,13 +101,13 @@ body{
     height: 550px;
 }
 
-.listItem{
+.listItemContainer{
     border: none;
     padding: 8px 16px;
     overflow: hidden;
     color: black;
     background-color: #879388;
-    text-align: center;
+    /* text-align: center; */
     cursor: pointer;
     white-space: nowrap;
     border-radius: 4px;
@@ -115,9 +115,41 @@ body{
 }
 
 
-.listItem:hover{
+.listItemContainer:hover{
     background-color: gray;
     color: #283227;
+}
+
+.listItem {
+    float: left;
+    font-weight: bold;
+    color: white;
+}
+
+.listDelete{
+    margin-left: 5px;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    /* background-color: rgb(255, 70, 70); */
+    cursor: pointer;
+    overflow: hidden;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    float: right;
+}
+
+.listDelete:hover{
+    margin-left: 5px;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    background-color: rgb(240, 0, 0);
+
 }
 
 .taskMenu{
@@ -164,7 +196,6 @@ body{
     cursor: pointer;
     overflow: hidden;
     vertical-align: middle;
-    display: inline-block;
     text-align: center;
     font-weight: bold;
     font-size: 15px;
