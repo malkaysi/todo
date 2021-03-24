@@ -12,13 +12,21 @@
     <div class='column listMenu'>
       <h1>To Do Lists</h1>
       <div class='listContainer'>
-        <div class='listItem clickRipple'>Monday's tasks</div>
-        <div class='listItem clickRipple'>Wednesdays tasks</div>
-        <div class='listItem clickRipple'>Wednesdays tasks</div>
+        <div class='listItemContainer clickRipple'>
+          <div class='listItem clickRipple'>Monday's tasks</div>
+          <div class='listDelete clickRipple'>X</div>
+        </div>
+        <div class='listItemContainer clickRipple'>
+          <div class='listItem clickRipple'>Don't forget to do this</div>
+          <div class='listDelete clickRipple'>X</div>
+        </div>
+        <div class='listItemContainer clickRipple'>
+          <div class='listItem clickRipple'>task for this</div>
+          <div class='listDelete clickRipple'>X</div>
+        </div>
       </div>
       <div class='projectButtonContainer'>
         <div class='newProject clickRipple'>+</div>
-        <div class='deleteProject clickRipple'>-</div>
       </div>
     </div>
 
@@ -27,20 +35,23 @@
       <div class='taskContainer'>
         <h2>This is a description of the specific task. We need to do the following for Monday.</h2>
         <div class='tasks'>
-          <div class='task'><label class='checkboxContainer'><input type="checkbox" name="checkbox" value="value">
-              <span class="checkmark"></span>This is something we need to finish asap This is something we need to
-              finish asap This is something we need to finish asap</label></div>
-          <div class='task'><label class='checkboxContainer'><input type="checkbox" name="checkbox" value="value"> is
-              <span class="checkmark"></span>something else we hvae to do for this list</label></div>
-          <div class='task'><label class='checkboxContainer'><input type="checkbox" name="checkbox" value="value">don't
-              <span class="checkmark"></span>forge tto do this, this is important too</label></div>
+          <div class='task'><label><input type="checkbox">test description for checkbox</label>
+            <div class='date'>1/25/2020</div>
+            <div class='delete clickRipple'>X</div>
+            <div class='edit clickRipple'></div>
+          </div>
+          <div class='task'><label><input type="checkbox">very long description ery long description ery long
+              description ery long description ery long description description ery long description ery long
+              description</label>
+            <div class='date'>1/25/2020</div>
+            <div class='delete clickRipple'>X</div>
+            <div class='edit clickRipple'></div>
+          </div>
         </div>
       </div>
-      <div class='taskButtonContainer'>
-        <div class='newTask clickRipple'>+</div>
-        <div class='deleteTask clickRipple'>-</div>
-      </div>
+      <div class='newTask clickRipple'>+</div>
     </div>
+  </div>
 
   </div>
 

@@ -78,7 +78,7 @@ body{
     font-weight: bold;
 }
 
-.newProject:hover{
+.newProject:hover, .newTask:hover{
     background-color: gray;
     color: #283227;
 }
@@ -101,13 +101,13 @@ body{
     height: 550px;
 }
 
-.listItem{
+.listItemContainer{
     border: none;
     padding: 8px 16px;
     overflow: hidden;
     color: black;
     background-color: #879388;
-    text-align: center;
+    /* text-align: center; */
     cursor: pointer;
     white-space: nowrap;
     border-radius: 4px;
@@ -115,9 +115,41 @@ body{
 }
 
 
-.listItem:hover{
+.listItemContainer:hover{
     background-color: gray;
     color: #283227;
+}
+
+.listItem {
+    float: left;
+    font-weight: bold;
+    color: white;
+}
+
+.listDelete{
+    margin-left: 5px;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    /* background-color: rgb(255, 70, 70); */
+    cursor: pointer;
+    overflow: hidden;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    float: right;
+}
+
+.listDelete:hover{
+    margin-left: 5px;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    background-color: rgb(240, 0, 0);
+
 }
 
 .taskMenu{
@@ -154,75 +186,57 @@ body{
     margin-top: 20px;
 }
 
-.checkboxContainer{
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
+.delete{
+    margin-left: 5px;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    background-color: rgb(255, 70, 70);
     cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    overflow: hidden;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    float: right;
 }
 
-.checkboxContainer input {
-    position: absolute;
-    opacity: 0;
+.delete:hover{
+    background-color: rgb(250, 190, 190);
+    color: black;
+}
+
+.edit{
+    background: url('./assets/edit-icon.png');
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    margin-left: 15px;
+    margin-right: 5px;
+    overflow: hidden;
     cursor: pointer;
-    height: 0;
-    width: 0;
-  }
+    vertical-align: middle;
+    text-align: center;
+    float: right;
+}
 
-  .checkmark {
-    position: absolute;
-    top: 50%;
-    left: -15px;
-    height: 25px;
-    width: 25px;
-    background-color: #879388;
-    transform: translateY(-50%);
-  }
+.date{
+    margin-left: 20px;
+    overflow: hidden;
+    float: right;
+    font-weight: bold;
+}
 
-  .checkboxContainer:hover input ~ .checkmark {
-    background-color: #ccc;
-  }
+.edit:hover{
+    background-color: gray;
+}
 
-  .checkboxContainer input:checked ~ .checkmark {
-    background-color: #283227;
-  }
+label{
+    font-size: large;
+}
 
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-
-  /* Show the checkmark when checked */
-.checkboxContainer input:checked ~ .checkmark:after {
-    display: block;
-  }
-  
-  /* Style the checkmark/indicator */
-  .checkboxContainer .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-
-  .delete{
-    height: 25px;
-    width: 25px;
-  }
-
-  .task label div {
-      display: inline;
-  }
-
+input[type=checkbox] {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
