@@ -19,6 +19,8 @@ let todo = (function () {
     const tasks = document.createElement('div');
     const newTask = document.createElement('div');
 
+    console.log(tasks);
+
     
 
     //bind events
@@ -29,14 +31,18 @@ let todo = (function () {
         row.classList.add('row');
         listMenu.classList.add('column', 'listMenu');
         listContainer.classList.add('listContainer');
+        //add projects to the listContainer
         projButtonContainer.classList.add('projectButtonContainer');
         newProject.classList.add('newProject', 'clickRipple');
+        newProject.textContent = '+';
         projectHeader.textContent = 'To Do Lists';
 
         taskMenu.classList.add('column', 'taskMenu');
         taskContainer.classList.add('taskContainer');
         tasks.classList.add('tasks');
         taskHeader.textContent = 'Tasks';
+        newTask.classList.add('newTask', 'clickRipple')
+        newTask.textContent = '+';
     }
 
     addClasses();
@@ -45,7 +51,13 @@ let todo = (function () {
         body.appendChild(row);
         row.appendChild(listMenu)
         listMenu.appendChild(projectHeader);
+        listMenu.appendChild(listContainer);
+        listMenu.appendChild(newProject);
 
+        row.appendChild(taskMenu);
+        taskMenu.appendChild(taskHeader);
+        taskMenu.appendChild(taskContainer);
+        taskMenu.appendChild(newTask);
     }
 
     createHomepage();
