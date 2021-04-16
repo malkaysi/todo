@@ -7,7 +7,7 @@ export let homepage = (function () {
     const listMenu = document.createElement('div');
     const projectHeader = document.createElement('h1');
     const listContainer = document.createElement('div');
-    const projButtonContainer = document.createElement('div');
+    const projInput = document.createElement('input');
     const newProject = document.createElement('div');
     
     const taskMenu = document.createElement('div');
@@ -22,14 +22,21 @@ export let homepage = (function () {
     // here we do addeventlisteners on the dom and run a function
 
     // function to add classes to homepage dom
-    function addClasses () {
+    function addAttributes () {
         row.classList.add('row');
         listMenu.classList.add('column', 'listMenu');
         listContainer.classList.add('listContainer');
         //add projects to the listContainer
-        projButtonContainer.classList.add('projectButtonContainer');
+
+        projInput.classList.add('projInput');
+        projInput.setAttribute('id', 'projInput');
+        projInput.placeholder = 'Add project...';
+        projInput.maxLength = 40;
+
         newProject.classList.add('newProject', 'clickRipple');
+        newProject.setAttribute('id', 'newProjButton')
         newProject.textContent = '+';
+        
         projectHeader.textContent = 'To Do Lists';
 
         taskMenu.classList.add('column', 'taskMenu');
@@ -40,13 +47,14 @@ export let homepage = (function () {
         newTask.textContent = '+';
     }
 
-    addClasses();
+    addAttributes();
 
     function createHomepage (){
         body.appendChild(row);
         row.appendChild(listMenu)
         listMenu.appendChild(projectHeader);
         listMenu.appendChild(listContainer);
+        listMenu.appendChild(projInput);
         listMenu.appendChild(newProject);
 
         row.appendChild(taskMenu);
