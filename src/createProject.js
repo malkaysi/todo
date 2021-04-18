@@ -1,18 +1,17 @@
-export let createProject = (() => {
+export let createProject = setTimeout((function() {
 
     //cacheDOM
-    //let projInputValue = document.getElementById('#projInput').value;
-    const newProjButton = document.getElementById('#newProjButton');
+    const newProjButton = document.querySelector('#newProjButton');
 
     //bindEvents
     // newProjButton.addEventListener('click', alert('test'));
-    /* newProjButton.addEventListener('click', () => {
-        alert('test')
-    }) */
+    newProjButton.addEventListener('click', () => {
+        getInputValue();
+    })
 
-    /* function getInputValue(){
-        projInputValue = document.getElementById('#projInput').value;
+    function getInputValue(){
+        let projInputValue = document.getElementById('projInput').value;
         console.log(projInputValue)
-    } */
+    }
     
-})();
+})(), 3000);

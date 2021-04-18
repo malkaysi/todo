@@ -8,7 +8,7 @@ export let homepage = (function () {
     const projectHeader = document.createElement('h1');
     const listContainer = document.createElement('div');
     const projInput = document.createElement('input');
-    const newProject = document.createElement('div');
+    const newProjButton = document.createElement('div');
     
     const taskMenu = document.createElement('div');
     const taskHeader = document.createElement('h1');
@@ -33,9 +33,9 @@ export let homepage = (function () {
         projInput.placeholder = 'Add project...';
         projInput.maxLength = 40;
 
-        newProject.classList.add('newProject', 'clickRipple');
-        newProject.setAttribute('id', 'newProjButton')
-        newProject.textContent = '+';
+        newProjButton.classList.add('newProject', 'clickRipple');
+        newProjButton.setAttribute('id', 'newProjButton')
+        newProjButton.textContent = '+';
         
         projectHeader.textContent = 'To Do Lists';
 
@@ -55,7 +55,7 @@ export let homepage = (function () {
         listMenu.appendChild(projectHeader);
         listMenu.appendChild(listContainer);
         listMenu.appendChild(projInput);
-        listMenu.appendChild(newProject);
+        listMenu.appendChild(newProjButton);
 
         row.appendChild(taskMenu);
         taskMenu.appendChild(taskHeader);
