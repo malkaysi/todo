@@ -218,7 +218,6 @@ body{
     cursor: pointer;
     vertical-align: middle;
     text-align: center;
-    float: right;
 }
 
 .date{
@@ -239,4 +238,10 @@ label{
 input[type=checkbox] {
     margin-right: 10px;
     transform: scale(1.2);
+}
+
+.projInput{
+    width: 50%;
+    text-align: left;
+    align-self: center;
 }
