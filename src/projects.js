@@ -8,20 +8,6 @@ export let projectList = (function () {
     const listContainer = document.querySelector('.listContainer');
 
     let projInput = document.getElementById('projInput');
-    // Creating html for projects
-    const listItemContainer = document.createElement('div');
-
-    const listItem = document.createElement('div');
-    const listDelete = document.createElement('div');
-
-    //Adding DOM Attributes
-    function addAttributes() {
-        listItemContainer.classList.add('listItemContainer', 'clickRipple');
-        listItem.classList.add('listItem', 'clickRipple');
-        listDelete.classList.add('listDelete', 'clickRipple');
-    }
-
-    addAttributes();
 
     //bindEvents
     newProjButton.addEventListener('click', createProject);
@@ -32,15 +18,33 @@ export let projectList = (function () {
 
         //creating new project object - will make this a separate module eventually
         const project = (projectTitle) => {
-            return { projectTitle }
+
+            function createDOM() {
+                // Creating html for projects
+                let listItemContainer = document.createElement('div');
+                let listItem = document.createElement('div');
+                let listDelete = document.createElement('div');
+
+                listItemContainer.classList.add('listItemContainer', 'clickRipple');
+                listItem.classList.add('listItem', 'clickRipple');
+                listDelete.classList.add('listDelete', 'clickRipple');
+
+                listItem.textContent = projectTitle;
+                listContainer.appendChild(listItemContainer);
+                listItemContainer.appendChild(listItem);
+                listItemContainer.appendChild(listDelete);
+            }
+
+            return { projectTitle, createDOM }
         }
         const newProj = project(projInputValue);
+
+        newProj.createDOM();
 
 
 
         // adding new project to projects array
         projects.push(newProj);
-        _render();
 
 
 
@@ -59,15 +63,7 @@ export let projectList = (function () {
         }
     } */
 
-    function _render(){
-        projects.forEach(function (_project) {
-            listItem.textContent = _project.projectTitle;
-            listContainer.appendChild(listItemContainer);
-            listItemContainer.appendChild(listItem);
-            listItemContainer.appendChild(listDelete);
-        })
-    }
-    
+
 
 
 })();
