@@ -1,49 +1,45 @@
 export let projectList = (function () {
     let projects = [];
-    console.log(projects.length);
+    // Eventually need to move this to a sort
+    let objectID = 0;
 
     // cacheDOM
     // Assigning from homepage.js
     const newProjButton = document.querySelector('#newProjButton');
     const listContainer = document.querySelector('.listContainer');
-    const deleteProjButton = document.querySelector('.listDelete');
-    const listItemContainer = document.querySelector('.listItemContainer');
     let projInput = document.getElementById('projInput');
 
     //bindEvents
     newProjButton.addEventListener('click', createProject);
-    if(projects.length > 0){
-        deleteProjButton.addEventListener('click', deleteProject);
-        listItemContainer.addEventListener('click', test);
-    }
-    deleteProjButton.addEventListener('click', deleteProject);
-        listItemContainer.addEventListener('click', test);
-    
+    listContainer.addEventListener('click', deleteProject, false);
 
     // Creating project object and adding to array
     function createProject() {
+        
+        console.log(objectID)
         let projInputValue = projInput.value;
-        const newProj = project(projInputValue);
+        const newProj = project(projInputValue, objectID);
         newProj.createDOM();
 
         // adding new project to projects array
         projects.push(newProj);
 
-        console.log(projects.length);
-
         projInput.value = '';
+        objectID++;
+        console.log(objectID)
+        console.log(projects);
     }
 
-    function test(){
-        alert('clicking the container')
-    }
-
-    function deleteProject(){
-        alert('test')
+    function deleteProject(e) {
+        if (e.target.id == 'listDelete') {
+            // Need to figure out a way to get the object tied to the element to delete it from the array and from the html
+            let objectID = e.target.getAttribute(_objectID);
+            alert(objectID)
+        }
     }
 
     // Project object
-    const project = (projectTitle) => {
+    const project = (projectTitle, objectID) => {
 
         function createDOM() {
             // Creating html for projects
@@ -54,15 +50,18 @@ export let projectList = (function () {
             listItemContainer.classList.add('listItemContainer', 'clickRipple');
             listItem.classList.add('listItem', 'clickRipple');
             listDelete.classList.add('listDelete', 'clickRipple');
+            listDelete.setAttribute('id', 'listDelete')
 
             listItem.textContent = projectTitle;
             listDelete.textContent = 'X';
             listContainer.appendChild(listItemContainer);
             listItemContainer.appendChild(listItem);
             listItemContainer.appendChild(listDelete);
+
+            listDelete._objectID = objectID;
         }
 
-        return { projectTitle, createDOM }
+        return { projectTitle, createDOM, objectID }
     }
 
 
