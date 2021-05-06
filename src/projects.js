@@ -16,7 +16,6 @@ export let projectList = (function () {
     // Creating project object and adding to array
     function createProject() {
         
-        console.log(objectID)
         let projInputValue = projInput.value;
         const newProj = project(projInputValue, objectID);
         newProj.createDOM();
@@ -25,16 +24,20 @@ export let projectList = (function () {
         projects.push(newProj);
 
         projInput.value = '';
-        objectID++;
-        console.log(objectID)
-        console.log(projects);
+
+
+        return newProj;
     }
 
-    function deleteProject(e) {
+    function deleteProject(e, newProj) {
         if (e.target.id == 'listDelete') {
-            // Need to figure out a way to get the object tied to the element to delete it from the array and from the html
-            let objectID = e.target.getAttribute(_objectID);
-            alert(objectID)
+            // Get parent node of target to remove from the listContainer
+            let listItemContainer = e.target.parentNode
+            listContainer.removeChild(listItemContainer);
+            // It's still in the array for now
+
+            projects.splice(projects.indexOf(newProj, 1));
+            console.log(projects)
         }
     }
 
@@ -61,10 +64,7 @@ export let projectList = (function () {
             listDelete._objectID = objectID;
         }
 
-        return { projectTitle, createDOM, objectID }
+        return { projectTitle, createDOM, objectID}
     }
-
-
-    // When they click the next, launch an addeventlistener on the dom
 
 })();
