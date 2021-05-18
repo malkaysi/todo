@@ -12,6 +12,7 @@ export let projectList = (function () {
     const newTask = document.querySelector('#newTaskButton');
     const modal = document.getElementById('myModal');
     const modalClose = document.getElementsByClassName("modal-close")[0]; 
+    
 
     //bindEvents
     newProjButton.addEventListener('click', createProject);
@@ -49,7 +50,8 @@ export let projectList = (function () {
             listContainer.removeChild(listItemContainer);
 
             projects.splice(index, 1);
-            sortProjectIndex();            
+            sortProjectIndex();  
+            console.log(projects)          
         }
     }
 
@@ -94,8 +96,10 @@ export let projectList = (function () {
 
     function sortProjectIndex() {
         let i;
+        let allListDelete = document.querySelectorAll('.listDelete')
         for(i=0; i<projects.length; i++){
             projects[i].projectIndex = i;
+            allListDelete[i].setAttribute('projectIndex', i);
         }
     }
 
