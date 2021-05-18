@@ -8,11 +8,17 @@ export let projectList = (function () {
     const newProjButton = document.querySelector('#newProjButton');
     const listContainer = document.querySelector('.listContainer');
     let projInput = document.getElementById('projInput');
-    //let listItem = document.querySelector('.listItem');
+    const taskContainer = document.querySelector('.taskContainer')
+    const newTask = document.querySelector('#newTaskButton');
+    const modal = document.getElementById('myModal');
+    const modalClose = document.getElementsByClassName("modal-close")[0]; 
+    
 
     //bindEvents
     newProjButton.addEventListener('click', createProject);
     listContainer.addEventListener('click', deleteProject, false);
+    newTask.addEventListener('click', displayModal);
+    modalClose.addEventListener('click', hideModal);
 
     // Creating project object and adding to array
     function createProject() {
@@ -27,6 +33,10 @@ export let projectList = (function () {
         projInput.value = '';
         projectIndex++;
 
+        sortProjectIndex();  
+        console.log(projects);
+
+        
         return newProj;
     }
 
@@ -40,18 +50,30 @@ export let projectList = (function () {
             listContainer.removeChild(listItemContainer);
 
             projects.splice(index, 1);
-            sortProjectIndex();            
+            sortProjectIndex();  
+            console.log(projects)          
         }
+    }
+
+    function displayModal(){
+        modal.style.display = 'block'
+    }
+
+    function hideModal(){
+        modal.style.display = 'none';
     }
 
     // Project object
     const project = (projectTitle, projectIndex) => {
+
+        let taskList = [];
 
         function createDOM() {
             // Creating html for projects
             let listItemContainer = document.createElement('div');
             let listItem = document.createElement('div');
             let listDelete = document.createElement('div');
+            let projectHeader = document.createElement('h2');
 
             listItemContainer.classList.add('listItemContainer', 'clickRipple');
             listItem.classList.add('listItem', 'clickRipple');
@@ -64,6 +86,8 @@ export let projectList = (function () {
             listContainer.appendChild(listItemContainer);
             listItemContainer.appendChild(listItem);
             listItemContainer.appendChild(listDelete);
+            projectHeader.textContent = projectTitle;
+            taskContainer.appendChild(projectHeader);
 
         }
 
@@ -72,10 +96,19 @@ export let projectList = (function () {
 
     function sortProjectIndex() {
         let i;
+        let allListDelete = document.querySelectorAll('.listDelete')
         for(i=0; i<projects.length; i++){
             projects[i].projectIndex = i;
+            allListDelete[i].setAttribute('projectIndex', i);
         }
     }
 
+    // each project object has a set of tasks (array)
+    // each task within the array is an object
+    // each task has a description and date that is inputted from a modal
+    // will need a render function that finds the id of the object clicked tied to the project array
+    // it will then display the header and the tasks
+
+    // There are a couple bugs in the code, doesn't delete all the time for some reason
 
 })();
