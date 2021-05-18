@@ -1,5 +1,13 @@
 export let homepage = (function () {
+{/* <div id="myModal" class="modal">
 
+<!-- Modal content -->
+<div class="modal-content">
+  <span class="modal-close">&times;</span>
+  <p>Some text in the Modal..</p>
+</div>
+
+</div> */}
     // cache DOM
     const body = document.querySelector('body');
     const row = document.createElement('div');
@@ -16,6 +24,10 @@ export let homepage = (function () {
     // Do we need to create a header now or later for the specific project?
     const tasks = document.createElement('div');
     const newTask = document.createElement('div');
+
+    const modalContainer = document.createElement('div');
+    const modalContent = document.createElement('div');
+    const modalClose = document.createElement('span');
    
 
     //bind events
@@ -45,6 +57,14 @@ export let homepage = (function () {
         taskHeader.textContent = 'Tasks';
         newTask.classList.add('newTask', 'clickRipple')
         newTask.textContent = '+';
+        newTask.setAttribute('id', 'newTaskButton')
+
+        modalContainer.setAttribute('id', 'myModal');
+        modalContainer.classList.add('modal')
+        modalContent.classList.add('modal-content')
+        modalClose.classList.add('modal-close')
+
+        modalClose.innerHTML = '&times';
     }
 
     addAttributes();
@@ -61,6 +81,9 @@ export let homepage = (function () {
         taskMenu.appendChild(taskHeader);
         taskMenu.appendChild(taskContainer);
         taskMenu.appendChild(newTask);
+        taskMenu.appendChild(modalContainer);
+        modalContainer.appendChild(modalContent);
+        modalContent.appendChild(modalClose)
     }
 
     createHomepage();
