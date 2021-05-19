@@ -284,3 +284,7 @@ input[type=checkbox] {
     text-decoration: none;
     cursor: pointer;
   }
+
+  .taskInput{
+      float: left;
+  }

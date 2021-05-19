@@ -1,3 +1,5 @@
+import {displayModal, hideModal} from './modal.js'
+
 export let projectList = (function () {
     let projects = [];
     // Eventually need to move this to a sort
@@ -10,7 +12,7 @@ export let projectList = (function () {
     let projInput = document.getElementById('projInput');
     const taskContainer = document.querySelector('.taskContainer')
     const newTask = document.querySelector('#newTaskButton');
-    const modal = document.getElementById('myModal');
+    
     const modalClose = document.getElementsByClassName("modal-close")[0]; 
     
 
@@ -55,13 +57,7 @@ export let projectList = (function () {
         }
     }
 
-    function displayModal(){
-        modal.style.display = 'block'
-    }
 
-    function hideModal(){
-        modal.style.display = 'none';
-    }
 
     // Project object
     const project = (projectTitle, projectIndex) => {
@@ -91,6 +87,10 @@ export let projectList = (function () {
 
         }
 
+        const task = () => {
+            
+        }
+
         return { projectTitle, createDOM, projectIndex}
     }
 
@@ -108,7 +108,5 @@ export let projectList = (function () {
     // each task has a description and date that is inputted from a modal
     // will need a render function that finds the id of the object clicked tied to the project array
     // it will then display the header and the tasks
-
-    // There are a couple bugs in the code, doesn't delete all the time for some reason
 
 })();

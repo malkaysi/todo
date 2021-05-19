@@ -1,13 +1,5 @@
 export let homepage = (function () {
-{/* <div id="myModal" class="modal">
 
-<!-- Modal content -->
-<div class="modal-content">
-  <span class="modal-close">&times;</span>
-  <p>Some text in the Modal..</p>
-</div>
-
-</div> */}
     // cache DOM
     const body = document.querySelector('body');
     const row = document.createElement('div');
@@ -28,6 +20,7 @@ export let homepage = (function () {
     const modalContainer = document.createElement('div');
     const modalContent = document.createElement('div');
     const modalClose = document.createElement('span');
+    const taskInput = document.createElement('input')
    
 
     //bind events
@@ -63,8 +56,12 @@ export let homepage = (function () {
         modalContainer.classList.add('modal')
         modalContent.classList.add('modal-content')
         modalClose.classList.add('modal-close')
-
         modalClose.innerHTML = '&times';
+
+        taskInput.classList.add('taskInput');
+        taskInput.setAttribute('id', 'taskInput');
+        taskInput.placeholder = 'Add Task...';
+        taskInput.maxLength = 100;
     }
 
     addAttributes();
@@ -83,7 +80,8 @@ export let homepage = (function () {
         taskMenu.appendChild(newTask);
         taskMenu.appendChild(modalContainer);
         modalContainer.appendChild(modalContent);
-        modalContent.appendChild(modalClose)
+        modalContent.appendChild(modalClose);
+        modalContent.appendChild(taskInput);
     }
 
     createHomepage();
