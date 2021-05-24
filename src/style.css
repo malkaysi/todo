@@ -288,3 +288,8 @@ input[type=checkbox] {
   .taskInput{
       float: left;
   }
+
+  .taskButton{
+      float: right;
+      margin-right: 50px;
+  }
