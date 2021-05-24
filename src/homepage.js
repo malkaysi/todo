@@ -21,6 +21,7 @@ export let homepage = (function () {
     const modalContent = document.createElement('div');
     const modalClose = document.createElement('span');
     const taskInput = document.createElement('input')
+    const dateInput = document.createElement('input');
    
 
     //bind events
@@ -62,6 +63,8 @@ export let homepage = (function () {
         taskInput.setAttribute('id', 'taskInput');
         taskInput.placeholder = 'Add Task...';
         taskInput.maxLength = 100;
+
+        dateInput.setAttribute('type', 'date');
     }
 
     addAttributes();
@@ -82,6 +85,7 @@ export let homepage = (function () {
         modalContainer.appendChild(modalContent);
         modalContent.appendChild(modalClose);
         modalContent.appendChild(taskInput);
+        modalContent.appendChild(dateInput);
     }
 
     createHomepage();
