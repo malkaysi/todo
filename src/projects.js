@@ -46,14 +46,7 @@ export let projectList = (function () {
 
     
 
-    function sortProjectIndex() {
-        let i;
-        let allListDelete = document.querySelectorAll('.listDelete')
-        for (i = 0; i < projects.length; i++) {
-            projects[i].projectIndex = i;
-            allListDelete[i].setAttribute('projectIndex', i);
-        }
-    }
+    
 
     // each project object has a set of tasks (array)
     // each task within the array is an object
