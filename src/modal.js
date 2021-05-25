@@ -8,5 +8,6 @@ function hideModal() {
     modal.style.display = 'none';
 }
 
+
 export { displayModal, hideModal }
 
