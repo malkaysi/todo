@@ -1,3 +1,5 @@
+import { displayModal, hideModal } from './modal.js'
+
 export let projectList = (function () {
     let projects = [];
     // Eventually need to move this to a sort
@@ -11,18 +13,20 @@ export let projectList = (function () {
     const taskContainer = document.querySelector('.taskContainer')
     const newTask = document.querySelector('#newTaskButton');
     const modal = document.getElementById('myModal');
-    const modalClose = document.getElementsByClassName("modal-close")[0]; 
-    
+    const modalClose = document.getElementsByClassName("modal-close")[0];
+    const taskSubmission = document.getElementsByClassName('taskButton');
+
 
     //bindEvents
     newProjButton.addEventListener('click', createProject);
     listContainer.addEventListener('click', deleteProject, false);
     newTask.addEventListener('click', displayModal);
     modalClose.addEventListener('click', hideModal);
+    modal.addEventListener('click', createTask, false);
 
     // Creating project object and adding to array
     function createProject() {
-        
+
         let projInputValue = projInput.value;
         const newProj = project(projInputValue, projectIndex);
         newProj.createDOM();
@@ -33,10 +37,10 @@ export let projectList = (function () {
         projInput.value = '';
         projectIndex++;
 
-        sortProjectIndex();  
+        sortProjectIndex();
         console.log(projects);
 
-        
+
         return newProj;
     }
 
@@ -44,24 +48,29 @@ export let projectList = (function () {
         let clickedEle = e.target
         if (clickedEle.id == 'listDelete') {
             let index = clickedEle.getAttribute('projectIndex')
-            
+
             // Get parent node of target to remove from the listContainer
             let listItemContainer = clickedEle.parentNode
             listContainer.removeChild(listItemContainer);
 
             projects.splice(index, 1);
-            sortProjectIndex();  
-            console.log(projects)          
+            sortProjectIndex();
+            console.log(projects)
         }
     }
 
-    function displayModal(){
-        modal.style.display = 'block'
+    function createTask(e) {
+        let clickedEle = e.target;
+        if (clickedEle.id == 'taskButton') {
+            alert('test');
+        }
+
+        // Need to find the correct project index in the projects array to add the task to the taskList
+        // when a project is clicked on, the index should be passed to this function
+
     }
 
-    function hideModal(){
-        modal.style.display = 'none';
-    }
+
 
     // Project object
     const project = (projectTitle, projectIndex) => {
@@ -91,13 +100,17 @@ export let projectList = (function () {
 
         }
 
-        return { projectTitle, createDOM, projectIndex}
+        const task = () => {
+
+        }
+
+        return { projectTitle, createDOM, projectIndex }
     }
 
     function sortProjectIndex() {
         let i;
         let allListDelete = document.querySelectorAll('.listDelete')
-        for(i=0; i<projects.length; i++){
+        for (i = 0; i < projects.length; i++) {
             projects[i].projectIndex = i;
             allListDelete[i].setAttribute('projectIndex', i);
         }
@@ -108,7 +121,5 @@ export let projectList = (function () {
     // each task has a description and date that is inputted from a modal
     // will need a render function that finds the id of the object clicked tied to the project array
     // it will then display the header and the tasks
-
-    // There are a couple bugs in the code, doesn't delete all the time for some reason
 
 })();
