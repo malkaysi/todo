@@ -22,27 +22,14 @@ export let projectList = (function () {
 
     //bindEvents
     //newProjButton.addEventListener('click', createProject);
-    listContainer.addEventListener('click', deleteProject, false);
+    // listContainer.addEventListener('click', deleteProject, false);
     newTask.addEventListener('click', displayModal);
     modalClose.addEventListener('click', hideModal);
     modal.addEventListener('click', createTask, false);
 
     
 
-    function deleteProject(e, projectIndex) {
-        let clickedEle = e.target
-        if (clickedEle.id == 'listDelete') {
-            let index = clickedEle.getAttribute('projectIndex')
-
-            // Get parent node of target to remove from the listContainer
-            let listItemContainer = clickedEle.parentNode
-            listContainer.removeChild(listItemContainer);
-
-            projects.splice(index, 1);
-            sortProjectIndex();
-            console.log(projects)
-        }
-    }
+    
 
     function createTask(e) {
         let clickedEle = e.target;
@@ -80,6 +67,8 @@ export let projectList = (function () {
 const project = (projectTitle, projectIndex) => {
 
     let taskList = [];
+    const listContainer = document.querySelector('.listContainer');
+    const taskContainer = document.querySelector('.taskContainer');
 
     function createDOM() {
         // Creating html for projects
