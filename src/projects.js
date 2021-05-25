@@ -1,15 +1,18 @@
 import { displayModal, hideModal } from './modal.js'
 
+let projects = [];
+let projectIndex = 0;
+
 export let projectList = (function () {
-    let projects = [];
+    
     // Eventually need to move this to a sort
-    let projectIndex = 0;
+    
 
     // cacheDOM
     // Assigning from homepage.js
     const newProjButton = document.querySelector('#newProjButton');
     const listContainer = document.querySelector('.listContainer');
-    let projInput = document.getElementById('projInput');
+    
     const taskContainer = document.querySelector('.taskContainer')
     const newTask = document.querySelector('#newTaskButton');
     const modal = document.getElementById('myModal');
@@ -18,31 +21,13 @@ export let projectList = (function () {
 
 
     //bindEvents
-    newProjButton.addEventListener('click', createProject);
+    //newProjButton.addEventListener('click', createProject);
     listContainer.addEventListener('click', deleteProject, false);
     newTask.addEventListener('click', displayModal);
     modalClose.addEventListener('click', hideModal);
     modal.addEventListener('click', createTask, false);
 
-    // Creating project object and adding to array
-    function createProject() {
-
-        let projInputValue = projInput.value;
-        const newProj = project(projInputValue, projectIndex);
-        newProj.createDOM();
-
-        // adding new project to projects array
-        projects.push(newProj);
-
-        projInput.value = '';
-        projectIndex++;
-
-        sortProjectIndex();
-        console.log(projects);
-
-
-        return newProj;
-    }
+    
 
     function deleteProject(e, projectIndex) {
         let clickedEle = e.target
@@ -72,40 +57,7 @@ export let projectList = (function () {
 
 
 
-    // Project object
-    const project = (projectTitle, projectIndex) => {
-
-        let taskList = [];
-
-        function createDOM() {
-            // Creating html for projects
-            let listItemContainer = document.createElement('div');
-            let listItem = document.createElement('div');
-            let listDelete = document.createElement('div');
-            let projectHeader = document.createElement('h2');
-
-            listItemContainer.classList.add('listItemContainer', 'clickRipple');
-            listItem.classList.add('listItem', 'clickRipple');
-            listDelete.classList.add('listDelete', 'clickRipple');
-            listDelete.setAttribute('id', 'listDelete')
-            listDelete.setAttribute('projectIndex', projectIndex)
-
-            listItem.textContent = projectTitle;
-            listDelete.textContent = 'X';
-            listContainer.appendChild(listItemContainer);
-            listItemContainer.appendChild(listItem);
-            listItemContainer.appendChild(listDelete);
-            projectHeader.textContent = projectTitle;
-            taskContainer.appendChild(projectHeader);
-
-        }
-
-        const task = () => {
-
-        }
-
-        return { projectTitle, createDOM, projectIndex }
-    }
+    
 
     function sortProjectIndex() {
         let i;
@@ -123,3 +75,40 @@ export let projectList = (function () {
     // it will then display the header and the tasks
 
 })();
+
+// Project object
+const project = (projectTitle, projectIndex) => {
+
+    let taskList = [];
+
+    function createDOM() {
+        // Creating html for projects
+        let listItemContainer = document.createElement('div');
+        let listItem = document.createElement('div');
+        let listDelete = document.createElement('div');
+        let projectHeader = document.createElement('h2');
+
+        listItemContainer.classList.add('listItemContainer', 'clickRipple');
+        listItem.classList.add('listItem', 'clickRipple');
+        listDelete.classList.add('listDelete', 'clickRipple');
+        listDelete.setAttribute('id', 'listDelete')
+        listDelete.setAttribute('projectIndex', projectIndex)
+
+        listItem.textContent = projectTitle;
+        listDelete.textContent = 'X';
+        listContainer.appendChild(listItemContainer);
+        listItemContainer.appendChild(listItem);
+        listItemContainer.appendChild(listDelete);
+        projectHeader.textContent = projectTitle;
+        taskContainer.appendChild(projectHeader);
+
+    }
+
+    const task = () => {
+
+    }
+
+    return { projectTitle, createDOM, projectIndex }
+}
+
+export {project, projects, projectIndex};
