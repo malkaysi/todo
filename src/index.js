@@ -2,14 +2,24 @@ import css from './style.css'
 import homepage from './homepage.js'
 import projectList from './projects.js'
 import { project, projects, projectIndex } from './projects.js'
+import { displayModal, hideModal } from './modal.js'
 
 let projInput = document.getElementById('projInput');
 const newProjButton = document.querySelector('#newProjButton');
 const listContainer = document.querySelector('.listContainer');
+const modal = document.getElementById('myModal');
+const newTask = document.querySelector('#newTaskButton');
+const modalClose = document.getElementsByClassName("modal-close")[0];
+const taskSubmission = document.getElementsByClassName('taskButton');
+
 
 //bindEvents
 newProjButton.addEventListener('click', createProject, false);
 listContainer.addEventListener('click', deleteProject, false);
+modal.addEventListener('click', createTask, false);
+newTask.addEventListener('click', displayModal);
+modalClose.addEventListener('click', hideModal);
+
 
 // Creating project object and adding to array
 function createProject() {
@@ -52,4 +62,15 @@ function sortProjectIndex() {
         projects[i].projectIndex = i;
         allListDelete[i].setAttribute('projectIndex', i);
     }
+}
+
+function createTask(e) {
+    let clickedEle = e.target;
+    if (clickedEle.id == 'taskButton') {
+        alert('test');
+    }
+
+    // Need to find the correct project index in the projects array to add the task to the taskList
+    // when a project is clicked on, the index should be passed to this function
+
 }

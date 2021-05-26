@@ -1,67 +1,13 @@
-import { displayModal, hideModal } from './modal.js'
-
 let projects = [];
 let projectIndex = 0;
 
-export let projectList = (function () {
-    
-    // Eventually need to move this to a sort
-    
-
-    // cacheDOM
-    // Assigning from homepage.js
-    const newProjButton = document.querySelector('#newProjButton');
-    const listContainer = document.querySelector('.listContainer');
-    
-    const taskContainer = document.querySelector('.taskContainer')
-    const newTask = document.querySelector('#newTaskButton');
-    const modal = document.getElementById('myModal');
-    const modalClose = document.getElementsByClassName("modal-close")[0];
-    const taskSubmission = document.getElementsByClassName('taskButton');
-
-
-    //bindEvents
-    //newProjButton.addEventListener('click', createProject);
-    // listContainer.addEventListener('click', deleteProject, false);
-    newTask.addEventListener('click', displayModal);
-    modalClose.addEventListener('click', hideModal);
-    modal.addEventListener('click', createTask, false);
-
-    
-
-    
-
-    function createTask(e) {
-        let clickedEle = e.target;
-        if (clickedEle.id == 'taskButton') {
-            alert('test');
-        }
-
-        // Need to find the correct project index in the projects array to add the task to the taskList
-        // when a project is clicked on, the index should be passed to this function
-
-    }
-
-
-
-    
-
-    
-
-    // each project object has a set of tasks (array)
-    // each task within the array is an object
-    // each task has a description and date that is inputted from a modal
-    // will need a render function that finds the id of the object clicked tied to the project array
-    // it will then display the header and the tasks
-
-})();
+const taskContainer = document.querySelector('.taskContainer')
+const listContainer = document.querySelector('.listContainer');
 
 // Project object
 const project = (projectTitle, projectIndex) => {
 
     let taskList = [];
-    const listContainer = document.querySelector('.listContainer');
-    const taskContainer = document.querySelector('.taskContainer');
 
     function createDOM() {
         // Creating html for projects
@@ -93,4 +39,10 @@ const project = (projectTitle, projectIndex) => {
     return { projectTitle, createDOM, projectIndex }
 }
 
-export {project, projects, projectIndex};
+// each project object has a set of tasks (array)
+// each task within the array is an object
+// each task has a description and date that is inputted from a modal
+// will need a render function that finds the id of the object clicked tied to the project array
+// it will then display the header and the tasks
+
+export { project, projects, projectIndex };
