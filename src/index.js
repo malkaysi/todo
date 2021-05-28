@@ -16,7 +16,6 @@ const listItemContainer = document.getElementsByClassName('listItemContainer');
 
 //bindEvents
 newProjButton.addEventListener('click', createProject, false);
-// listContainer.addEventListener('click', deleteProject, false);
 modal.addEventListener('click', createTask, false);
 newTask.addEventListener('click', displayModal);
 modalClose.addEventListener('click', hideModal);
