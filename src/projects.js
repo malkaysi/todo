@@ -17,6 +17,7 @@ const project = (projectTitle, projectIndex) => {
         let projectHeader = document.createElement('h2');
 
         listItemContainer.classList.add('listItemContainer', 'clickRipple');
+        listItemContainer.setAttribute('id', "listItemContainer")
         listItem.classList.add('listItem', 'clickRipple');
         listDelete.classList.add('listDelete', 'clickRipple');
         listDelete.setAttribute('id', 'listDelete')
@@ -38,6 +39,10 @@ const project = (projectTitle, projectIndex) => {
 
     return { projectTitle, createDOM, projectIndex }
 }
+
+
+
+
 
 // each project object has a set of tasks (array)
 // each task within the array is an object
