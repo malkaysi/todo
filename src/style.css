@@ -224,6 +224,7 @@ body{
     cursor: pointer;
     vertical-align: middle;
     text-align: center;
+    float: right;
 }
 
 .date{

@@ -83,4 +83,3 @@ function createTask(e) {
     // color of the project should change to dark green
 
 }
-
