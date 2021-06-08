@@ -31,6 +31,10 @@ const project = (projectTitle, projectIndex) => {
         projectHeader.textContent = projectTitle;
         taskContainer.appendChild(projectHeader);
 
+        // Task container keeps being added and isn't removed after creating a new task. Need to change the content of the task container
+        // Window after changing the focus of the project
+        // If a new project is created, the focus should change to that new project
+
     }
 
     const task = () => {
