@@ -13,6 +13,10 @@ const modalClose = document.getElementsByClassName("modal-close")[0];
 const taskSubmission = document.getElementsByClassName('taskButton');
 const listItemContainer = document.getElementsByClassName('listItemContainer');
 
+// When listItemContainer is clicked, it should change to a different color and the tasks under it should show up in the task container
+// When clicked listItemContainer, we can change its class to one with a different color and pull the projectIndex id to get the right object in the array
+// We can then show all the tasks in the container for that specific object
+
 
 //bindEvents
 newProjButton.addEventListener('click', createProject, false);
@@ -20,6 +24,7 @@ modal.addEventListener('click', createTask, false);
 newTask.addEventListener('click', displayModal);
 modalClose.addEventListener('click', hideModal);
 listContainer.addEventListener('click', getProjectIndex, false);
+// listItemContainer.addEventListener('click', focusProject);
 
 
 // Creating project object and adding to array
@@ -48,6 +53,8 @@ function getProjectIndex(e) {
     if (clickedEle.id == 'listItemContainer') {
         e.stopPropagation();
         index = clickedEle.lastChild.getAttribute('projectIndex')
+        
+        focusProject();
     } else if (clickedEle.id == 'listDelete') {
         e.stopPropagation();
         index = clickedEle.getAttribute('projectIndex');
@@ -55,6 +62,7 @@ function getProjectIndex(e) {
     }
 
 }
+
 
 function deleteProject(clickedEle, index) {
     let listItemContainer = clickedEle.parentNode
@@ -82,5 +90,11 @@ function createTask(e) {
     // when a project is clicked on, the index should be passed to this function
     // color of the project should change to dark green
 
+}
+
+function focusProject(){
+    alert('test');
+
+    // Need to select the right listItemContainer
 }
 

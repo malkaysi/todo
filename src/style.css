@@ -122,7 +122,11 @@ body{
     color: #283227;
 }
 
-.listItemContainer:active{
+/* .listItemContainer:active{
+    background-color: green;
+} */
+
+.listItemContainer-active{
     background-color: green;
 }
 
