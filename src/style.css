@@ -101,6 +101,8 @@ body{
     height: 550px;
 }
 
+
+
 .listItemContainer{
     border: none;
     padding: 8px 16px;
@@ -118,6 +120,10 @@ body{
 .listItemContainer:hover{
     background-color: gray;
     color: #283227;
+}
+
+.listItemContainer:active{
+    background-color: green;
 }
 
 .listItem {
@@ -218,7 +224,6 @@ body{
     cursor: pointer;
     vertical-align: middle;
     text-align: center;
-    float: right;
 }
 
 .date{

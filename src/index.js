@@ -1,4 +1,8 @@
 import css from './style.css'
+import homepage from './homepage.js'
+import projectList from './projects.js'
+import { project, projects, projectIndex } from './projects.js'
+import { displayModal, hideModal } from './modal.js'
 
 let projInput = document.getElementById('projInput');
 const newProjButton = document.querySelector('#newProjButton');
@@ -79,3 +83,4 @@ function createTask(e) {
     // color of the project should change to dark green
 
 }
+
