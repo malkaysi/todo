@@ -21,7 +21,7 @@ const project = (projectTitle, projectIndex) => {
         listItem.classList.add('listItem', 'clickRipple');
         listDelete.classList.add('listDelete', 'clickRipple');
         listDelete.setAttribute('id', 'listDelete')
-        listDelete.setAttribute('projectIndex', projectIndex)
+        listItemContainer.setAttribute('projectIndex', projectIndex)
 
         listItem.textContent = projectTitle;
         listDelete.textContent = 'X';
@@ -30,6 +30,11 @@ const project = (projectTitle, projectIndex) => {
         listItemContainer.appendChild(listDelete);
         projectHeader.textContent = projectTitle;
         taskContainer.appendChild(projectHeader);
+
+        // Task container keeps being added and isn't removed after creating a new task. Need to change the content of the task container
+        // Window after changing the focus of the project
+        // If a new project is created, the focus should change to that new project
+        // Work on changing the color of project after making it the focus first.
 
     }
 
