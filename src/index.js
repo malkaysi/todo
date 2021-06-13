@@ -53,7 +53,7 @@ function getProjectIndex(e) {
     if (clickedEle.id == 'listItemContainer') {
         e.stopPropagation();
         index = clickedEle.getAttribute('projectIndex')
-        focusProject();
+        focusProject(index, clickedEle);
     } else if (clickedEle.id == 'listDelete') {
         e.stopPropagation();
         index = clickedEle.parentNode.getAttribute('projectIndex');
@@ -91,8 +91,16 @@ function createTask(e) {
 
 }
 
-function focusProject(){
-    alert('test');
+function focusProject(index, clickedEle){
+    let allListItemContainers = document.querySelectorAll('.listItemContainer');
+    let i;
+    for (i=0; i <allListItemContainers.length; i++){
+        if(allListItemContainers[i].classList.contains('listItemContainer-active')){
+            allListItemContainers[i].classList.remove('listItemContainer-active');
+        }
+    }
+    clickedEle.classList.toggle('listItemContainer-active');
+
 
     // Need to select the right listItemContainer
 }
