@@ -9,12 +9,17 @@ const project = (projectTitle, projectIndex) => {
 
     let taskList = [];
 
+    // Task object
+    const task = (projectTitle) => {
+
+    }
+
     function createDOM() {
         // Creating html for projects
         let listItemContainer = document.createElement('div');
         let listItem = document.createElement('div');
         let listDelete = document.createElement('div');
-        let projectHeader = document.createElement('h2');
+        // 
 
         listItemContainer.classList.add('listItemContainer', 'clickRipple');
         listItemContainer.setAttribute('id', "listItemContainer")
@@ -28,31 +33,31 @@ const project = (projectTitle, projectIndex) => {
         listContainer.appendChild(listItemContainer);
         listItemContainer.appendChild(listItem);
         listItemContainer.appendChild(listDelete);
-        projectHeader.textContent = projectTitle;
+        /* projectHeader.textContent = projectTitle;
+        taskContainer.appendChild(projectHeader); */
+
+        taskList.push(projectTitle)
+
+    }
+
+    function createTaskDOM(){
+        displayHeader()
+    }
+
+    function displayHeader(){
+        let projectHeader = document.createElement('h2');
+        projectHeader.textContent = taskList[0];
         taskContainer.appendChild(projectHeader);
-
-        // Task container keeps being added and isn't removed after creating a new task. Need to change the content of the task container
-        // Window after changing the focus of the project
-        // If a new project is created, the focus should change to that new project
-        // Work on changing the color of project after making it the focus first.
-
     }
 
-    const task = () => {
+    // Dom for task container list should occur in a separate function
 
-    }
-
-    return { projectTitle, createDOM, projectIndex }
+    return { projectTitle, createDOM, projectIndex, createTaskDOM, taskList }
 }
 
+// when a project is created, the project title should be passed to the task object as the first value
+// the first value of the taskList array is the projectTitle
+// 
 
-
-
-
-// each project object has a set of tasks (array)
-// each task within the array is an object
-// each task has a description and date that is inputted from a modal
-// will need a render function that finds the id of the object clicked tied to the project array
-// it will then display the header and the tasks
 
 export { project, projects, projectIndex };

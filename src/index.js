@@ -1,7 +1,7 @@
 import css from './style.css'
 import homepage from './homepage.js'
 import projectList from './projects.js'
-import { project, projects, projectIndex } from './projects.js'
+import { project, projects, projectIndex} from './projects.js'
 import { displayModal, hideModal } from './modal.js'
 
 let projInput = document.getElementById('projInput');
@@ -12,11 +12,7 @@ const newTask = document.querySelector('#newTaskButton');
 const modalClose = document.getElementsByClassName("modal-close")[0];
 const taskSubmission = document.getElementsByClassName('taskButton');
 const listItemContainer = document.getElementsByClassName('listItemContainer');
-
-// When listItemContainer is clicked, it should change to a different color and the tasks under it should show up in the task container
-// When clicked listItemContainer, we can change its class to one with a different color and pull the projectIndex id to get the right object in the array
-// We can then show all the tasks in the container for that specific object
-
+const taskContainer = document.querySelector('.taskContainer')
 
 //bindEvents
 newProjButton.addEventListener('click', createProject, false);
@@ -30,8 +26,8 @@ listContainer.addEventListener('click', getProjectIndex, false);
 // Creating project object and adding to array
 function createProject() {
 
-    let projInputValue = projInput.value;
-    const newProj = project(projInputValue, projectIndex);
+    let projectTitle = projInput.value;
+    const newProj = project(projectTitle, projectIndex);
     newProj.createDOM();
 
     // adding new project to projects array
@@ -45,19 +41,31 @@ function createProject() {
     return newProj;
 
 }
+let previousIndex = -1;
 
 // gets the index of the project item clicked to either delete or do something else
 function getProjectIndex(e) {
     let clickedEle = e.target;
-    let index;
+    let selectedIndex;
+    
     if (clickedEle.id == 'listItemContainer') {
+        
         e.stopPropagation();
-        index = clickedEle.getAttribute('projectIndex')
-        focusProject(index, clickedEle);
+        selectedIndex = clickedEle.getAttribute('projectIndex')
+
+        // Checking to see if a new project is clicked to populate task dom
+        if(selectedIndex != previousIndex){
+            removeTaskList();
+            focusProject(selectedIndex, clickedEle);
+            previousIndex = selectedIndex;
+        } else{
+            console.log('do nothing')
+        }
+
     } else if (clickedEle.id == 'listDelete') {
         e.stopPropagation();
-        index = clickedEle.parentNode.getAttribute('projectIndex');
-        deleteProject(clickedEle, index);
+        selectedIndex = clickedEle.parentNode.getAttribute('projectIndex');
+        deleteProject(clickedEle, selectedIndex);
     }
 
 }
@@ -85,23 +93,36 @@ function createTask(e) {
         alert('test');
     }
 
-    // Need to find the correct project index in the projects array to add the task to the taskList
-    // when a project is clicked on, the index should be passed to this function
-    // color of the project should change to dark green
-
 }
 
-function focusProject(index, clickedEle){
+// Every time the focus changes, remove all the child nodes of task container
+function focusProject(selectedIndex, clickedEle){
     let allListItemContainers = document.querySelectorAll('.listItemContainer');
     let i;
+    let selectedProject = projects[selectedIndex]
+
+    // removes any active projects
     for (i=0; i <allListItemContainers.length; i++){
         if(allListItemContainers[i].classList.contains('listItemContainer-active')){
             allListItemContainers[i].classList.remove('listItemContainer-active');
         }
     }
+
     clickedEle.classList.toggle('listItemContainer-active');
 
+    // Need to clear the task container
+    //
 
-    // Need to select the right listItemContainer
+    // The selected project already has the taskList array and all the data we need
+    // Just need to access the data from the project object
+    selectedProject.createTaskDOM();
+    
+
 }
+
+function removeTaskList() {
+    while(taskContainer.hasChildNodes()){
+        taskContainer.removeChild(taskContainer.firstChild);
+    }
+};
 
