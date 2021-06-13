@@ -52,12 +52,11 @@ function getProjectIndex(e) {
     let index;
     if (clickedEle.id == 'listItemContainer') {
         e.stopPropagation();
-        index = clickedEle.lastChild.getAttribute('projectIndex')
-        
+        index = clickedEle.getAttribute('projectIndex')
         focusProject();
     } else if (clickedEle.id == 'listDelete') {
         e.stopPropagation();
-        index = clickedEle.getAttribute('projectIndex');
+        index = clickedEle.parentNode.getAttribute('projectIndex');
         deleteProject(clickedEle, index);
     }
 
@@ -73,7 +72,7 @@ function deleteProject(clickedEle, index) {
 
 function sortProjectIndex() {
     let i;
-    let allListDelete = document.querySelectorAll('.listDelete')
+    let allListDelete = document.querySelectorAll('.listItemContainer')
     for (i = 0; i < projects.length; i++) {
         projects[i].projectIndex = i;
         allListDelete[i].setAttribute('projectIndex', i);

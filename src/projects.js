@@ -21,7 +21,7 @@ const project = (projectTitle, projectIndex) => {
         listItem.classList.add('listItem', 'clickRipple');
         listDelete.classList.add('listDelete', 'clickRipple');
         listDelete.setAttribute('id', 'listDelete')
-        listDelete.setAttribute('projectIndex', projectIndex)
+        listItemContainer.setAttribute('projectIndex', projectIndex)
 
         listItem.textContent = projectTitle;
         listDelete.textContent = 'X';
