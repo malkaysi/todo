@@ -10,7 +10,7 @@ const listContainer = document.querySelector('.listContainer');
 const modal = document.getElementById('myModal');
 const newTask = document.querySelector('#newTaskButton');
 const modalClose = document.getElementsByClassName("modal-close")[0];
-const taskSubmission = document.getElementsByClassName('taskButton');
+const taskSubmission = document.getElementsByClassName('submitTask');
 const listItemContainer = document.getElementsByClassName('listItemContainer');
 const taskContainer = document.querySelector('.taskContainer')
 
@@ -89,7 +89,7 @@ function sortProjectIndex() {
 
 function createTask(e) {
     let clickedEle = e.target;
-    if (clickedEle.id == 'taskButton') {
+    if (clickedEle.id == 'submitTask') {
         alert('test');
     }
 

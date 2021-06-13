@@ -68,8 +68,8 @@ export let homepage = (function () {
         taskInput.maxLength = 100;
         dateInput.setAttribute('type', 'date');
         taskSubmission.setAttribute('type', 'button');
-        taskSubmission.setAttribute('id', 'taskButton');
-        taskSubmission.classList.add('taskButton');
+        taskSubmission.setAttribute('id', 'submitTask');
+        taskSubmission.classList.add('submitTask');
         taskSubmission.innerHTML = 'Add Task';
 
     }

@@ -300,7 +300,7 @@ input[type=checkbox] {
       float: left;
   }
 
-  .taskButton{
+  .submitTask{
       float: right;
       margin-right: 50px;
   }
