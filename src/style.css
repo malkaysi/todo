@@ -40,20 +40,22 @@ body{
     background-color: #283227;
     font-size: 25px!important;
     border: none;
-    display: inline-block;
+    display: flex;
     height: 75px;
     width: 75px;
     line-height: 75px;
-    vertical-align: middle;
-    overflow: hidden;
+    /* vertical-align: middle; */
+    /* overflow: hidden; */
     text-decoration: none;
-    text-align: center;
+    /* text-align: center; */
     cursor: pointer;
     white-space: nowrap;
     border-radius: 50%;
     align-self: center;
     margin-top: 50px;
     font-weight: bold;
+    justify-content: center;
+    align-items: center;
 }
 
 .deleteProject, .deleteTask{
@@ -98,7 +100,7 @@ body{
 .listContainer{
     display: flex;
     flex-direction: column;
-    height: 550px;
+    height: 100%;
 }
 
 
@@ -179,7 +181,7 @@ body{
 .taskContainer{
     /* border-color: black;
     border-style: solid; */
-    height: 550px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
