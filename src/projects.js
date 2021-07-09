@@ -4,6 +4,13 @@ let projectIndex = 0;
 const taskContainer = document.querySelector('.taskContainer')
 const listContainer = document.querySelector('.listContainer');
 
+// For tasks
+let tasksElement = document.createElement('div');
+tasksElement.classList.add('tasks');
+
+
+
+
 // Project object
 const project = (projectTitle, projectIndex) => {
 
@@ -12,7 +19,32 @@ const project = (projectTitle, projectIndex) => {
     // Task object
     const task = (taskTitle, date) => {
 
-        return {taskTitle, date}
+        function createTaskDOM() {
+
+            let taskElement = document.createElement('div');
+            taskElement.classList.add('task');
+            let taskLabel = document.createElement('label');
+            let checkbox = document.createElement('INPUT');
+            checkbox.setAttribute("type", "checkbox");
+            let dateElement = document.createElement('div');
+            dateElement.classList.add('date');
+            let deleteTask = document.createElement('div');
+            deleteTask.classList.add('delete', 'clickRipple');
+            deleteTask.textContent = 'X';
+            let editTask = document.createElement('div');
+            editTask.classList.add('edit', 'clickRipple');
+
+            tasksElement.appendChild(taskElement);
+            taskElement.appendChild(taskLabel);
+            taskLabel.appendChild(checkbox);
+            taskLabel.textContent = taskTitle;
+            dateElement.textContent = date;
+            taskElement.appendChild(dateElement);
+            taskElement.appendChild(deleteTask);
+            taskElement.appendChild(editTask);
+        }
+
+        return { taskTitle, date, createTaskDOM }
     }
 
     function createDOM() {
@@ -41,19 +73,16 @@ const project = (projectTitle, projectIndex) => {
 
     }
 
-    function createTaskDOM(){
-        displayHeader()
-    }
-
-    function displayHeader(){
+    function displayHeader() {
         let projectHeader = document.createElement('h2');
         projectHeader.textContent = taskList[0];
         taskContainer.appendChild(projectHeader);
+        taskContainer.appendChild(tasksElement);
     }
 
     // Dom for task container list should occur in a separate function
 
-    return { projectTitle, createDOM, projectIndex, createTaskDOM, taskList, task }
+    return { projectTitle, createDOM, projectIndex, displayHeader, taskList, task }
 }
 
 // when a project is created, the project title should be passed to the task object as the first value
@@ -61,4 +90,4 @@ const project = (projectTitle, projectIndex) => {
 // 
 
 
-export { project, projects, projectIndex};
+export { project, projects, projectIndex };

@@ -107,12 +107,7 @@ function focusProject(selectedIndex, clickedEle){
 
     clickedEle.classList.toggle('listItemContainer-active');
 
-    // Need to clear the task container
-    //
-
-    // The selected project already has the taskList array and all the data we need
-    // Just need to access the data from the project object
-    selectedProject.createTaskDOM();
+    selectedProject.displayHeader();
 
     console.log(selectedProject)
     
@@ -134,12 +129,15 @@ function addTask(){
     let dateInput = document.getElementById('date');
     let taskInputValue = taskInput.value;
     let dateInputValue = dateInput.value;
-    // Found the right project (selectedproject)
-    // Push to the tasks object
+
     hideModal();
+    // Date and time added to the correct project
     const newTask = selectedProject.task(taskInputValue, dateInputValue);
     selectedProject.taskList.push(newTask)
 
+    newTask.createTaskDOM();
+
+    // The DOM needs to be created with the newly created task and values
     taskInput.value = '';
 }
 
