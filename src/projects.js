@@ -10,9 +10,9 @@ const project = (projectTitle, projectIndex) => {
     let taskList = [];
 
     // Task object
-    const task = (taskTitle) => {
+    const task = (taskTitle, date) => {
 
-        return taskTitle;
+        return {taskTitle, date}
     }
 
     function createDOM() {

@@ -113,6 +113,8 @@ function focusProject(selectedIndex, clickedEle){
     // The selected project already has the taskList array and all the data we need
     // Just need to access the data from the project object
     selectedProject.createTaskDOM();
+
+    console.log(selectedProject)
     
     return selectedProject;
 
@@ -129,13 +131,16 @@ function createTask(e) {
 
 function addTask(){
     let taskInput = document.getElementById('taskInput');
+    let dateInput = document.getElementById('date');
     let taskInputValue = taskInput.value;
+    let dateInputValue = dateInput.value;
     // Found the right project (selectedproject)
     // Push to the tasks object
     hideModal();
-    const newTask = selectedProject.task(taskInputValue);
+    const newTask = selectedProject.task(taskInputValue, dateInputValue);
     selectedProject.taskList.push(newTask)
-    console.log(selectedProject)
+
+    taskInput.value = '';
 }
 
 
