@@ -67,6 +67,7 @@ export let homepage = (function () {
         taskInput.placeholder = 'Add Task...';
         taskInput.maxLength = 100;
         dateInput.setAttribute('type', 'date');
+        dateInput.setAttribute('id', 'date');
         taskSubmission.setAttribute('type', 'button');
         taskSubmission.setAttribute('id', 'submitTask');
         taskSubmission.classList.add('submitTask');

@@ -1,9 +1,10 @@
 import css from './style.css'
 import homepage from './homepage.js'
 import projectList from './projects.js'
-import { project, projects, projectIndex} from './projects.js'
+import { project, projects, projectIndex, taskList} from './projects.js'
 import { displayModal, hideModal } from './modal.js'
 
+let selectedProject = null;
 let projInput = document.getElementById('projInput');
 const newProjButton = document.querySelector('#newProjButton');
 const listContainer = document.querySelector('.listContainer');
@@ -58,6 +59,7 @@ function getProjectIndex(e) {
             removeTaskList();
             focusProject(selectedIndex, clickedEle);
             previousIndex = selectedIndex;
+            
         } else{
             console.log('do nothing')
         }
@@ -71,11 +73,14 @@ function getProjectIndex(e) {
 }
 
 
+
+
 function deleteProject(clickedEle, index) {
     let listItemContainer = clickedEle.parentNode
     listContainer.removeChild(listItemContainer);
     projects.splice(index, 1);
     sortProjectIndex();
+
 }
 
 function sortProjectIndex() {
@@ -87,19 +92,11 @@ function sortProjectIndex() {
     }
 }
 
-function createTask(e) {
-    let clickedEle = e.target;
-    if (clickedEle.id == 'submitTask') {
-        alert('test');
-    }
-
-}
-
 // Every time the focus changes, remove all the child nodes of task container
 function focusProject(selectedIndex, clickedEle){
     let allListItemContainers = document.querySelectorAll('.listItemContainer');
     let i;
-    let selectedProject = projects[selectedIndex]
+    selectedProject = projects[selectedIndex]
 
     // removes any active projects
     for (i=0; i <allListItemContainers.length; i++){
@@ -116,9 +113,37 @@ function focusProject(selectedIndex, clickedEle){
     // The selected project already has the taskList array and all the data we need
     // Just need to access the data from the project object
     selectedProject.createTaskDOM();
+
+    console.log(selectedProject)
     
+    return selectedProject;
 
 }
+
+function createTask(e) {
+    let clickedEle = e.target;
+    if (clickedEle.id == 'submitTask') {
+        // Need to take the input within task and add it to the task object within the project object
+        addTask();
+    }
+
+}
+
+function addTask(){
+    let taskInput = document.getElementById('taskInput');
+    let dateInput = document.getElementById('date');
+    let taskInputValue = taskInput.value;
+    let dateInputValue = dateInput.value;
+    // Found the right project (selectedproject)
+    // Push to the tasks object
+    hideModal();
+    const newTask = selectedProject.task(taskInputValue, dateInputValue);
+    selectedProject.taskList.push(newTask)
+
+    taskInput.value = '';
+}
+
+
 
 function removeTaskList() {
     while(taskContainer.hasChildNodes()){

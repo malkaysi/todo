@@ -10,8 +10,9 @@ const project = (projectTitle, projectIndex) => {
     let taskList = [];
 
     // Task object
-    const task = (projectTitle) => {
+    const task = (taskTitle, date) => {
 
+        return {taskTitle, date}
     }
 
     function createDOM() {
@@ -52,7 +53,7 @@ const project = (projectTitle, projectIndex) => {
 
     // Dom for task container list should occur in a separate function
 
-    return { projectTitle, createDOM, projectIndex, createTaskDOM, taskList }
+    return { projectTitle, createDOM, projectIndex, createTaskDOM, taskList, task }
 }
 
 // when a project is created, the project title should be passed to the task object as the first value
@@ -60,4 +61,4 @@ const project = (projectTitle, projectIndex) => {
 // 
 
 
-export { project, projects, projectIndex };
+export { project, projects, projectIndex};
